@@ -1,6 +1,6 @@
 ---
 title: Phone
-category: Contact Syncing
+category: Personal Interest
 order: 2
 ---
 

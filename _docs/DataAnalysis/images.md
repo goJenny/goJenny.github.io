@@ -1,6 +1,6 @@
 ---
 title: Images
-category: Media
+category: DataAnalysis
 order: 1
 ---
 

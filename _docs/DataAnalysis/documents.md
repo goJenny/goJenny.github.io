@@ -1,6 +1,6 @@
 ---
 title: Documents
-category: Media
+category: DataAnalysis
 order: 3
 ---
 

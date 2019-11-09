@@ -1,6 +1,6 @@
 ---
 title: Video
-category: Media
+category: DataAnalysis
 order: 2
 ---
 

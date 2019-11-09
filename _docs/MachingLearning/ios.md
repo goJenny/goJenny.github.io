@@ -1,6 +1,6 @@
 ---
 title: iOS
-category: Devices
+category: MachineLearning
 order: 1
 ---
 
