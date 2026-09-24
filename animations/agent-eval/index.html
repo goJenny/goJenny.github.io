@@ -318,7 +318,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
       </section>
 
       <!-- ========== S3 : 평가 계층 ========== -->
-      <section class="scene light s3" data-dur="9.5">
+      <section class="scene light s3" data-dur="11.5">
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a">Benchmark → Trial → Task → Turn → Step</div>
           <div class="h1 a" style="--d:.1s">모든 점수는 5단 계층으로 집계됩니다</div></div>
@@ -330,7 +330,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
           <div class="steps4"><span>tool call</span><span>tool call</span><span>command</span><span class="alt">plan</span><span class="alt">final message</span></div></div>
         <div class="rollup a" style="--d:4s"><span class="arr">↑</span>Step 점수가<br>위로 쌓여<br>최종 점수가 됩니다</div>
         <svg class="char b talk gest a" data-c="b" viewBox="0 0 320 580" style="left:960px;top:150px;width:280px;--an:right;--d:.3s"></svg>
-        <div class="cap" data-subs="평가는 Benchmark, Trial, Task, Turn, Step의 고정 계층으로 집계됩니다.|점수의 출발점은 가장 작은 단위인 Step, 대부분은 도구 호출 한 번입니다." data-w="32,32"></div>
+        <div class="cap" data-subs="평가는 Benchmark, Trial, Task, Turn, Step의 고정 계층으로 집계됩니다.|점수의 출발점은 가장 작은 단위인 Step, 대부분은 도구 호출 한 번입니다." data-w="4.75,6.75"></div>
       </section>
 
       <!-- ========== S4 : 두 가지 채점 ========== -->
@@ -364,7 +364,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
       </section>
 
       <!-- ========== S5 : SWE-bench 사례 ========== -->
-      <section class="scene light s5" data-dur="11">
+      <section class="scene light s5" data-dur="13">
         <div class="sun"></div>
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a">Case · SWE-bench Verified</div>
@@ -384,7 +384,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
           <div class="sr"><span>도구 호출 정밀도<i>Tool-call Precision</i></span><b class="r">3/4</b></div>
           <div class="sr"><span>인자 정확도<i>Argument Accuracy</i></span><b>4/4</b></div>
         </div>
-        <div class="cap" data-subs="에이전트가 pytest 이슈를 해결해 테스트를 통과했습니다.|다만 파일 전체를 연 2단계는 불필요했고, 이는 단계별 점수에만 나타납니다." data-w="29,34"></div>
+        <div class="cap" data-subs="에이전트가 pytest 이슈를 해결해 테스트를 통과했습니다.|다만 파일 전체를 연 2단계는 불필요했고, 이는 단계별 점수에만 나타납니다." data-w="5.06,7.94"></div>
       </section>
 
       <!-- ========== S6 : 6대 지표 ========== -->
@@ -407,7 +407,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
       </section>
 
       <!-- ========== S7 : 벤치마크 읽는 법 ========== -->
-      <section class="scene light s7" data-dur="12">
+      <section class="scene light s7" data-dur="14">
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a">How to Read an Evaluation</div>
           <div class="h1 a" style="--d:.1s">벤치마크 점수를 비교하기 전에 확인할 세 가지</div></div>
@@ -448,11 +448,11 @@ code,.mono{font-family:var(--mono);font-size:13px}
             <text x="354" y="96" font-size="12" fill="#5A8F00" font-weight="700" text-anchor="middle">같은 정확도, 더 빠른 완료</text>
           </svg>
         </div>
-        <div class="cap" data-subs="점수를 비교할 때는 과업 복잡도, 상태 반영, 검증 방식을 확인합니다.|PinchBench에서 Nemotron 3.5 Lightning은 86% 정확도를 더 짧은 시간에 달성했습니다." data-w="30,43"></div>
+        <div class="cap" data-subs="점수를 비교할 때는 과업 복잡도, 상태 반영, 검증 방식을 확인합니다.|PinchBench에서 Nemotron 3.5 Lightning은 86% 정확도를 더 짧은 시간에 달성했습니다." data-w="4.93,9.07"></div>
       </section>
 
       <!-- ========== S8 : 자체 평가 5단계 ========== -->
-      <section class="scene dark s8" data-dur="8.5">
+      <section class="scene dark s8" data-dur="10.5">
         <div class="dots"></div>
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a">Benchmarking Your Own Workload</div>
@@ -465,7 +465,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
           <div class="pc a" style="--d:1.9s"><div class="num">5</div><h5>결과 검증<span>Verify</span></h5><p>결과는 환경에서, 언어 품질은 심판 모델로, 끊긴 지점은 정밀도·인자 정확도로 확인합니다.</p></div>
         </div>
         <div class="close a" style="--d:2.8s">벤치마크가 <em>실제 운영 환경</em>에 가까울수록,<br>그 점수에 더 큰 비중을 두어야 합니다.</div>
-        <div class="cap" data-subs="자사 업무에 맞춘 평가는 다섯 단계로 진행합니다.|운영 환경에 가까운 벤치마크일수록 그 점수에 더 큰 비중을 둡니다." data-w="23,30"></div>
+        <div class="cap" data-subs="자사 업무에 맞춘 평가는 다섯 단계로 진행합니다.|운영 환경에 가까운 벤치마크일수록 그 점수에 더 큰 비중을 둡니다." data-w="3.69,6.81"></div>
       </section>
 
       <!-- ========== S9 : 정리 ========== -->
@@ -488,7 +488,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
   </div>
   <div class="bar">
     <div class="track"><div class="fill" id="fill"></div></div>
-    <span class="time" id="time">0:00 / 1:37</span>
+    <span class="time" id="time">0:00 / 1:45</span>
     <button class="replay" id="replay" type="button">처음부터 재생</button>
   </div>
 </div>
