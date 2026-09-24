@@ -91,6 +91,26 @@ code,.mono{font-family:var(--mono);font-size:13px}
   .scene{transition:none}
 }
 
+
+/* ---------- S0 intro ---------- */
+.s0 .sun{position:absolute;left:50%;top:470px;width:1300px;height:1300px;margin-left:-650px;border-radius:50%;background:var(--g);border:5px solid var(--ink)}
+.s0 .rays{position:absolute;left:50%;top:470px;width:1300px;height:1300px;margin-left:-650px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.13) 0 5deg,transparent 5deg 13deg)}
+.s0 .meta{position:absolute;left:0;right:0;top:64px;text-align:center;font:900 15px var(--body);letter-spacing:.16em;color:var(--g)}
+.s0 .ttl{position:absolute;left:0;right:0;top:104px;text-align:center}
+.s0 .en1{font:400 76px/1.05 var(--disp);color:var(--white);letter-spacing:.01em}
+.s0 .en2{font:400 44px/1.2 var(--disp);color:var(--g);margin-top:8px}
+.s0 .ko{display:inline-block;margin-top:18px;font:700 22px var(--body);color:var(--ink);background:var(--white);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--g);border-radius:10px;padding:6px 18px}
+.s0 .by{margin-top:14px;font-size:14px;color:var(--muted-d)}
+.flow{position:absolute;left:330px;top:392px;width:620px;height:60px}
+.flow .from,.flow .to{position:absolute;top:8px;font:700 15px var(--mono);border:4px solid var(--ink);border-radius:10px;padding:8px 12px;white-space:nowrap}
+.flow .from{left:0;background:#2A2D26;color:var(--white);border-color:#8C9383}
+.flow .to{right:0;background:var(--g);color:var(--ink)}
+.flow .path{position:absolute;left:150px;right:190px;top:28px;height:0;border-top:4px dashed #8C9383}
+.flow .runner{position:absolute;left:150px;top:18px;width:24px;height:24px;border-radius:50%;background:var(--g);border:4px solid var(--ink)}
+.scene.on .flow .runner{animation:run 2.2s cubic-bezier(.5,0,.3,1) 1.6s both}
+@keyframes run{from{left:150px}to{left:406px}}
+@media (prefers-reduced-motion:reduce){.scene.on .flow .runner{animation:none;left:406px}}
+
 /* ---------- S1 ---------- */
 .s1 .sun{position:absolute;left:-150px;top:210px;width:620px;height:620px;border-radius:50%;background:var(--g);border:5px solid var(--ink)}
 .s1 .rays{position:absolute;left:-150px;top:210px;width:620px;height:620px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.14) 0 8deg,transparent 8deg 22deg)}
@@ -236,8 +256,27 @@ code,.mono{font-family:var(--mono);font-size:13px}
   <div class="viewport" id="vp">
     <div class="stage" id="stage">
 
+      <!-- ========== S0 : 인트로 ========== -->
+      <section class="scene dark s0 on" data-dur="7">
+        <div class="dots"></div>
+        <div class="sun a" style="--an:up;--d:.1s"></div><div class="rays"></div>
+        <div class="meta a" style="--d:.2s">NVIDIA TECHNICAL BLOG · 2026.9.21 · 한국어 해설</div>
+        <div class="ttl">
+          <div class="en1 a" style="--d:.4s">How to Evaluate AI Agents</div>
+          <div class="en2 a" style="--d:.8s">From Tool Calls to Task Completion</div>
+          <div class="ko a" style="--d:1.2s">AI 에이전트 평가: 도구 호출에서 과업 완수까지</div>
+          <div class="by a" style="--d:1.5s">원문 저자 Sophia Abbassi · Chris Alexiuk · Davide Onofrio · Gomathy Venkata Krishnan</div>
+        </div>
+        <div class="flow a" style="--d:1.4s">
+          <span class="from">tool_call()</span><span class="path"></span><span class="runner"></span><span class="to">✓ Task Complete</span>
+        </div>
+        <svg class="char a gest a" data-c="a" viewBox="0 0 320 580" style="left:70px;top:330px;width:220px;--an:up;--d:2s"></svg>
+        <svg class="char b talk a" data-c="b" viewBox="0 0 320 580" style="left:990px;top:330px;width:220px;--an:up;--d:2.2s"></svg>
+        <div class="cap" data-subs="오늘 살펴볼 글은 NVIDIA 기술 블로그의 ‘How to Evaluate AI Agents’입니다.|도구 호출에서 과업 완수까지, AI 에이전트 평가 방법을 정리합니다."></div>
+      </section>
+
       <!-- ========== S1 : 문제 제기 ========== -->
-      <section class="scene light s1 on" data-dur="6.5">
+      <section class="scene light s1" data-dur="6.5">
         <div class="sun"></div><div class="rays"></div>
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a" style="--d:.1s">How to Evaluate AI Agents</div>
@@ -449,7 +488,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
   </div>
   <div class="bar">
     <div class="track"><div class="fill" id="fill"></div></div>
-    <span class="time" id="time">0:00 / 1:10</span>
+    <span class="time" id="time">0:00 / 1:17</span>
     <button class="replay" id="replay" type="button">처음부터 재생</button>
   </div>
 </div>
@@ -663,7 +702,7 @@ const total=durs.reduce((a,b)=>a+b,0);
 const fill=document.getElementById('fill'),time=document.getElementById('time'),btn=document.getElementById('replay');
 const fmt=t=>`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
 let t0=performance.now(),cur=-1,curSub=-1,done=false;
-const jump=location.hash.match(/^#s([1-9])$/); if(jump) t0-=starts[jump[1]-1]*1000;
+const jump=location.hash.match(/^#s(\d+)$/); if(jump) t0-=(starts[+jump[1]]||0)*1000;
 
 function show(i){
   scenes.forEach((s,k)=>{ if(k!==i) s.classList.remove('on') });
