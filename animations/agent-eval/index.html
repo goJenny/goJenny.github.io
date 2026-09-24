@@ -674,12 +674,12 @@ function setSub(i,j){
   const cap=scenes[i].querySelector('.cap'); if(!cap) return;
   const subs=cap.dataset.subs.split('|');
   cap.classList.add('swap');
-  setTimeout(()=>{cap.textContent=subs[j];cap.classList.remove('swap')}, curSub===-1?0:180);
+  if(REC){cap.textContent=subs[j];cap.classList.remove('swap')}
+  else setTimeout(()=>{cap.textContent=subs[j];cap.classList.remove('swap')}, curSub===-1?0:180);
   curSub=j;
 }
-function tick(now){
-  let t=(now-t0)/1000;
-  if(t>=total){t=total;done=true}
+const REC=location.hash==='#rec';
+function render(t){
   let i=starts.findIndex((s,k)=>t>=s && t<s+durs[k]); if(i<0) i=scenes.length-1;
   if(i!==cur) show(i);
   const subs=scenes[i].querySelector('.cap').dataset.subs.split('|');
@@ -687,10 +687,16 @@ function tick(now){
   if(j!==curSub) setSub(i,j);
   fill.style.width=(t/total*100)+'%';
   time.textContent=`${fmt(t)} / ${fmt(total)}`;
+}
+function tick(now){
+  let t=(now-t0)/1000;
+  if(t>=total){t=total;done=true}
+  render(t);
   if(!done) requestAnimationFrame(tick);
 }
+window.__seek=t=>render(Math.min(t,total));
 btn.addEventListener('click',()=>{t0=performance.now();cur=-1;curSub=-1;const was=done;done=false;if(was)requestAnimationFrame(tick)});
-requestAnimationFrame(tick);
+if(!REC) requestAnimationFrame(tick);
 })();
 </script>
 </body>
