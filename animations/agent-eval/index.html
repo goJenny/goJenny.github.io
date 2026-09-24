@@ -216,6 +216,17 @@ code,.mono{font-family:var(--mono);font-size:13px}
 .close{position:absolute;left:52px;top:458px;font:400 28px/1.35 var(--disp);color:var(--white)}
 .close em{font-style:normal;color:var(--g)}
 
+
+/* ---------- S9 ---------- */
+.s9 .sun{position:absolute;left:50%;top:560px;width:1100px;height:1100px;margin-left:-550px;border-radius:50%;background:var(--g);border:5px solid var(--ink)}
+.s9 .rays{position:absolute;left:50%;top:560px;width:1100px;height:1100px;margin-left:-550px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.14) 0 6deg,transparent 6deg 16deg)}
+.recap{position:absolute;left:330px;top:176px;width:620px;display:flex;flex-direction:column;gap:16px}
+.rc{display:flex;align-items:center;gap:16px;background:var(--white);border:5px solid var(--ink);border-radius:16px;box-shadow:6px 6px 0 var(--ink);padding:14px 20px}
+.rc .ck{width:46px;height:46px;flex:none;border-radius:12px;background:var(--g);border:4px solid var(--ink);display:grid;place-items:center;font:900 24px var(--body)}
+.rc div{font:700 21px/1.4 var(--body)}
+.rc div b{font-weight:900;background:linear-gradient(transparent 58%,#C9E59A 58%)}
+.rc div small{display:block;font:500 13px var(--body);color:var(--muted);margin-top:2px}
+
 @media (max-width:640px){.bar{font-size:12px}.credit{font-size:11px}}
 </style>
 </head>
@@ -314,7 +325,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
       </section>
 
       <!-- ========== S5 : SWE-bench 사례 ========== -->
-      <section class="scene light s5" data-dur="8.5">
+      <section class="scene light s5" data-dur="9">
         <div class="sun"></div>
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a">Case · SWE-bench Verified</div>
@@ -357,7 +368,7 @@ code,.mono{font-family:var(--mono);font-size:13px}
       </section>
 
       <!-- ========== S7 : 벤치마크 읽는 법 ========== -->
-      <section class="scene light s7" data-dur="7.5">
+      <section class="scene light s7" data-dur="10">
         <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
         <div class="head"><div class="kick a">How to Read an Evaluation</div>
           <div class="h1 a" style="--d:.1s">벤치마크 점수를 비교하기 전에 확인할 세 가지</div></div>
@@ -418,11 +429,27 @@ code,.mono{font-family:var(--mono);font-size:13px}
         <div class="cap" data-subs="자사 업무에 맞춘 평가는 다섯 단계로 진행합니다.|운영 환경에 가까운 벤치마크일수록 그 점수에 더 큰 비중을 둡니다."></div>
       </section>
 
+      <!-- ========== S9 : 정리 ========== -->
+      <section class="scene light s9" data-dur="7">
+        <div class="sun"></div><div class="rays"></div>
+        <div class="src">출처: NVIDIA Technical Blog (2026.9.21) 내용 해설</div>
+        <div class="head" style="text-align:center"><div class="kick a">Wrap-up</div>
+          <div class="h1 a" style="--d:.1s">정리하면, 에이전트 평가는 이렇게 합니다</div></div>
+        <svg class="char a gest a" data-c="a" viewBox="0 0 320 580" style="left:40px;top:190px;width:250px;--an:left;--d:.2s"></svg>
+        <div class="recap">
+          <div class="rc a" style="--d:.6s;--an:up"><span class="ck">✓</span><div>호출이 아니라 <b>과업 완수</b>를 봅니다<small>Tool calls → Task completion</small></div></div>
+          <div class="rc a" style="--d:1.6s;--an:up"><span class="ck">✓</span><div><b>결과</b>로 판단하고, <b>과정</b>으로 원인을 찾습니다<small>E2E로 판단 · Step-level로 추적</small></div></div>
+          <div class="rc a" style="--d:2.6s;--an:up"><span class="ck">✓</span><div><b>반복</b>과 <b>비용</b>까지 함께 봅니다<small>Consistency · Cost per Success</small></div></div>
+        </div>
+        <svg class="char b talk a" data-c="b" viewBox="0 0 320 580" style="left:990px;top:190px;width:250px;--an:right;--d:.3s"></svg>
+        <div class="cap" data-subs="정리하면, 에이전트 평가는 호출이 아닌 과업 완수를 봅니다.|결과로 판단하고 과정으로 원인을 찾으며, 반복과 비용까지 함께 봅니다."></div>
+      </section>
+
     </div>
   </div>
   <div class="bar">
     <div class="track"><div class="fill" id="fill"></div></div>
-    <span class="time" id="time">0:00 / 0:58</span>
+    <span class="time" id="time">0:00 / 1:10</span>
     <button class="replay" id="replay" type="button">처음부터 재생</button>
   </div>
 </div>
@@ -636,7 +663,7 @@ const total=durs.reduce((a,b)=>a+b,0);
 const fill=document.getElementById('fill'),time=document.getElementById('time'),btn=document.getElementById('replay');
 const fmt=t=>`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
 let t0=performance.now(),cur=-1,curSub=-1,done=false;
-const jump=location.hash.match(/^#s([1-8])$/); if(jump) t0-=starts[jump[1]-1]*1000;
+const jump=location.hash.match(/^#s([1-9])$/); if(jump) t0-=starts[jump[1]-1]*1000;
 
 function show(i){
   scenes.forEach((s,k)=>{ if(k!==i) s.classList.remove('on') });
